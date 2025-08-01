@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Para Mi aly</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      font-family: 'Segoe UI', sans-serif;
+      background-image: url('aly1.jpg');
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      transition: background 1s ease;
+      overflow-x: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #main {
+      text-align: center;
+    }
+
+    #startBtn {
+      padding: 12px 25px;
+      font-size: 16px;
+      background-color: #ff69b4;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      animation: pulse 2s infinite;
+      box-shadow: 0 0 10px #ff69b4;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+    #content {
+      display: none;
+      padding: 30px;
+      text-align: center;
+      color: white;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .box {
+      width: 250px;
+      height: auto;
+      padding: 15px;
+      font-size: 16px;
+      border-radius: 15px;
+      border: 2px solid white;
+      font-family: 'Comic Sans MS', cursive;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      background-color: #ffe4f0;
+      margin: 15px auto;
+      animation: fadeInUp 1s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    button:not(#startBtn) {
+      background-color: #ffb6c1;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 12px;
+      font-size: 16px;
+      cursor: pointer;
+      animation: fadeInUp 1s ease;
+      transition: background-color 0.3s ease;
+      margin: 8px;
+    }
+
+    button:not(#startBtn):hover {
+      background-color: #ff8da1;
+    }
+
+    .floatingBtn {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      background-color: #ff69b4;
+      color: white;
+      padding: 12px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 20px;
+      box-shadow: 0 0 10px #ff69b4;
+      animation: floatBtn 5s infinite linear;
+    }
+
+    @keyframes floatBtn {
+      0% { transform: translate(0, 0); }
+      25% { transform: translate(100px, -50px); }
+      50% { transform: translate(-100px, 50px); }
+      75% { transform: translate(50px, -100px); }
+      100% { transform: translate(0, 0); }
+    }
+
+    .heart {
+      position: absolute;
+      font-size: 24px;
+      color: #B87DFF;
+      animation: fall 2s linear forwards;
+    }
+
+    @keyframes fall {
+      0% { opacity: 1; top: 0; }
+      100% { opacity: 0; top: 100vh; }
+    }
+    
+    .box form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.box textarea {
+  width: 90%;
+  max-width: 220px;
+  border-radius: 8px;
+  padding: 8px;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 14px;
+  resize: none;
+  border: 1px solid #ff69b4;
+  box-shadow: 0 0 5px #ffb6c1;
+  margin-bottom: 10px;
+}
+.box audio {
+  width: 90%;
+  max-width: 220px;
+  margin: 5px auto;
+  display: block;
+  border-radius: 8px;
+  box-shadow: 0 0 5px #ffb6c1;
+}
+  </style>
+</head>
+<body>
+  <div id="main">
+    <button id="startBtn">Feliz cumpleaños princesa 💖</button>
+
+    <div id="content">
+      <div class="box">
+        <h2>Cartita 💖</h2>
+        <p>Feliz cumpleaños mi princesa 🩵 Felices 14. Gracias por haber aparecido en mi vida. Te deseo que tengas el mejor cumpleaños que puedas tener. Mereces cosas muy lindas. A pesar de que yo solo conozca una parte de ti, puedo decir que eres maravillosa sin importar cuál sea esa parte, porque ante mis ojos siempre serás la mejor.</p>
+      </div>
+
+      <button onclick="showSongs()">🎶 Mostrar canciones</button>
+      <div id="songs" class="box" style="display:none;">
+        <p>Puedes escucharlas mientras miras 💫</p>
+        <audio controls src="pinki promise.mxx"></audio>
+        <audio controls src="te quiero dijiste.m4a"></audio>
+      </div>
+
+      <div class="floatingBtn" onclick="launchHeart()">💗</div>
+
+      <button onclick="showPhotos()">📸 Ver fotos</button>
+      <div id="photos" class="box" style="display:none;">
+        <img src="foto1.jpg" width="200">
+        <img src="foto2.jpg" width="200">
+      </div>
+
+      <button onclick="showLetters()">💌 Ver cartas</button>
+      <div id="letters" class="box" style="display:none;">
+        <img src="carta1.jpg" width="200">
+        <img src="carta2.jpg" width="200">
+      </div>
+
+      <div class="box" style="background-image: url('deseos.jpg'); background-size: cover;">
+        <h3>Escribe tu deseo ✨</h3>
+        <p>Puede que teniendo fe se cumpla 💖</p>
+        <form action="https://formsubmit.co/mairelyn.l.s0827@gmail.com" method="POST">
+          <button id="listoBtn" style="display:none;">¿Listo?</button>
+
+<div id="verRecuerdos" style="display:none;">
+  <button onclick="iniciarCuenta()">¿Quieres ver algunos recuerdos?</button>
+</div>
+
+<div id="cuentaRegresiva" class="box" style="display:none;">
+  <h3 id="contador">14</h3>
+  <p id="frase"></p>
+</div>
+
+<div id="recuerdos" class="box" style="display:none;">
+  <h3>Recuerdos 📸</h3>
+  <img src="foto1.jpg" width="200">
+  <img src="foto2.jpg" width="200">
+</div>
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_subject" value="Nuevo deseo secreto ✨">
+          <textarea name="deseo" rows="4" cols="40" placeholder="Deseo que..." required></textarea>
+          <input type="submit" style="display:none;">
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const startBtn = document.getElementById('startBtn');
+    const content = document.getElementById('content');
+
+    startBtn.onclick = () => {
+      document.body.style.backgroundImage = "url('aly2.jpg')";
+      startBtn.style.display = "none";
+      content.style.display = "block";
+    };
+
+    function showSongs() {
+      document.getElementById('songs').style.display = 'block';
+    }
+
+    function showPhotos() {
+      document.getElementById('photos').style.display = 'block';
+    }
+
+    function showLetters() {
+      document.getElementById('letters').style.display = 'block';
+    }
+
+    function launchHeart() {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.style.left = Math.random() * window.innerWidth + 'px';
+      heart.innerText = 'tamuuu💖';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 2000);
+    }
+  </script>
+  <script>
+  const frases = [
+    "Graciaspor aver aparecido en mi vida",
+    "Tu sonrisa es mi lugar favorito 🌸",
+    "14 años de ser la persona mas maravillosa ✨",
+    "Eres más especial de lo que imaginas 💌",
+    "Tus palabras son estrellas en mi cielo 🌠",
+    "Tu presencia es mi regalo favorito 🎁",
+    "Nunca olvidaré cómo me haces sentir 💗",
+    "Eres mi inspiración diaria 🌷",
+    "Tu luz ilumina mis días ☀️",
+    "Gracias por existir 🩵",
+    "Tu corazón es un universo hermoso 🌌",
+    "Cada momento contigo es eterno 🕊️",
+    "Eres mi mejor recuerdo 📸",
+    "Feliz cumpleaños, princesa 🩵"
+  ];
+
+  const textarea = document.querySelector('textarea');
+  const listoBtn = document.getElementById('listoBtn');
+  const verRecuerdos = document.getElementById('verRecuerdos');
+  const cuentaBox = document.getElementById('cuentaRegresiva');
+  const contador = document.getElementById('contador');
+  const frase = document.getElementById('frase');
+  const recuerdos = document.getElementById('recuerdos');
+
+  textarea.addEventListener('input', () => {
+    if (textarea.value.length > 0) {
+      listoBtn.style.display = 'inline-block';
+    } else {
+      listoBtn.style.display = 'none';
+      verRecuerdos.style.display = 'none';
+      cuentaBox.style.display = 'none';
+      recuerdos.style.display = 'none';
+    }
+  });
+
+  listoBtn.onclick = () => {
+    listoBtn.style.display = 'none';
+    verRecuerdos.style.display = 'block';
+  };
+
+  function iniciarCuenta() {
+    verRecuerdos.style.display = 'none';
+    cuentaBox.style.display = 'block';
+    let i = 14;
+
+    const intervalo = setInterval(() => {
+      contador.innerText = i;
+      frase.innerText = frases[14 - i];
+      lanzarPetalo();
+      i--;
+
+      if (i < 0) {
+        clearInterval(intervalo);
+        cuentaBox.style.display = 'none';
+        recuerdos.style.display = 'block';
+      }
+    }, 1000);
+  }
+
+  function lanzarPetalo() {
+    const petal = document.createElement('div');
+    petal.className = 'petal';
+    petal.style.left = Math.random() * window.innerWidth + 'px';
+    petal.innerText = '🌸';
+    document.body.appendChild(petal);
+    setTimeout(() => petal.remove(), 2000);
+  }
+</script>
+</body>
+        </html>
